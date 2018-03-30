@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="btnColorNewGame">#1E88E5</color>
+    <color name="btnColorLoadGame">#1976D2</color>
+    <color name="btnColorQuitGame">#1565C0</color>
+    <color name="textMenu">#E3F2FD</color>
 </resources>
