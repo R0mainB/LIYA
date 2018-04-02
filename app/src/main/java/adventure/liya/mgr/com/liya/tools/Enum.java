@@ -9,6 +9,5 @@ public class Enum {
     public enum eDes{
         FACE6,
         FACE100
-
     }
 }
