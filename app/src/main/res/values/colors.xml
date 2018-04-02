@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="btnColorNewGame">#1E88E5</color>
-    <color name="btnColorLoadGame">#1976D2</color>
-    <color name="btnColorQuitGame">#1565C0</color>
+    <color name="colorPrimary">#3E2723</color>
+    <color name="colorPrimaryDark">#4E342E</color>
+    <color name="colorAccent">#B71C1C</color>
+    <color name="btnColorNewGame">#8D6E63</color>
+    <color name="btnColorLoadGame">#795548</color>
+    <color name="btnColorQuitGame">#6D4C41</color>
     <color name="textMenu">#E3F2FD</color>
+    <color name="backgroundApp">#5D4037</color>
 </resources>

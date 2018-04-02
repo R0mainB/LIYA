@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
+    android:background="@color/backgroundApp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -12,12 +13,18 @@
         android:layout_weight="1"
         android:gravity="center">
 
-        <TextView
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/nom_appli"-->
+            <!--style="@style/TitreAppli"-->
+            <!--android:gravity="center"/>-->
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nom_appli"
-            style="@style/TitreAppli"
-            android:gravity="center"/>
+            android:layout_height="match_parent"
+            android:src="@drawable/logo1"
+            android:contentDescription="@string/sigle_app" />
 
     </LinearLayout>
 
