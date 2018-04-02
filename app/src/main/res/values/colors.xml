@@ -8,4 +8,7 @@
     <color name="btnColorQuitGame">#6D4C41</color>
     <color name="textMenu">#E3F2FD</color>
     <color name="backgroundApp">#5D4037</color>
+    <color name="blanc">#FFFFFF</color>
+    <color name="barreVie">#F44336</color>
+    <color name="barreMagie">#2196F3</color>
 </resources>
