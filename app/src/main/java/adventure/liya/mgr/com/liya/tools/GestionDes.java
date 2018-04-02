@@ -2,21 +2,19 @@ package adventure.liya.mgr.com.liya.tools;
 
 import java.util.Random;
 
-import adventure.liya.mgr.com.liya.tools.Enum;
-
 /**
  * Created by Maxouxou on 02/04/2018.
  */
 
 public class GestionDes {
 
-    final int MIN_DES = 1;
+    private final int MIN_DES = 1;
 
-    final int MIN_ECHECRIT_100 = 96;
-    final int MAX_REUSSICRIT_100 = 5;
+    private final int MIN_ECHECRIT_100 = 96;
+    private final int MAX_REUSSICRIT_100 = 5;
 
-    final int DES_6_MAX = 6;
-    final int DES_100_MAX =100;
+    private final int DES_6_MAX = 6;
+    private final int DES_100_MAX =100;
 
 
     public Integer selectionnerDes(Enum.eDes des){
@@ -33,9 +31,8 @@ public class GestionDes {
     }
 
     public Integer lancerDes(int des){
-        final int min = 1;
         Random rand = new Random();
-        return rand.nextInt(des - min + 1) + min;
+        return rand.nextInt(des + MIN_DES);
     }
 
     public Boolean gererReussiteCritique(int des,int resultDes){
