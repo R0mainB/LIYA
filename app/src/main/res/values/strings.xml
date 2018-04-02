@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">LIYA</string>
-    <string name="nom_zone">nom zone</string>
-    <string name="description_action">description</string>
-    <string name="btn_action_1">btn action 1</string>
-    <string name="btn_action_2">btn action 2</string>
-    <string name="btn_action_3">btn action 3</string>
-    <string name="btn_action_4">btn action 4</string>
     <string name="nom_appli">Live It Yourself: Adventure</string>
     <string name="new_game">Nouvelle partie</string>
     <string name="load_game">Charger partie</string>
     <string name="quit_app">Quitter le jeu</string>
+    <string name="zone_action">zone action</string>
+    <string name="description_action">description</string>
+    <string name="text_btnAction_1">btnAction1</string>
+    <string name="text_btnAction_2">btnAction2</string>
+    <string name="text_btnAction_3">btnAction3</string>
+    <string name="text_btnAction_4">btnAction4</string>
 </resources>
