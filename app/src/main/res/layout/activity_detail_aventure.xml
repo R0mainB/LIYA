@@ -58,9 +58,30 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Description de l'histoire qui commencée bien mais ou finalement c'est le bordel et t'es le héros donc bon courage pour sauver la princesse qui veut juste un nouvel iphone X alors que cette application est sur android alors qu'elle se casse la mégère perso j'ai de l'argent à faire. Merci et bonne année."
+        android:text="Description de l'histoire qui commençais bien mais ou finalement c'est le bordel et t'es le héros donc bon courage pour sauver la princesse qui veut juste un nouvel iphone X alors que cette application est sur android alors qu'elle se casse la mégère perso j'ai de l'argent à faire. Merci et bonne année."
         style="@style/TexteAppli"
-        android:paddingTop="10dp"
-        android:layout_weight="8"/>
+        android:paddingTop="20dp"
+        android:layout_weight="6"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Annuler"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Commencer"/>
+
+    </LinearLayout>
 
 </LinearLayout>
