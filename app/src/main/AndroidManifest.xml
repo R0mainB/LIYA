@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ecran.ActionActivity" />
-
+        <activity android:name=".ecran.CombatActivity" />
+        <activity android:name=".ecran.SelectionAventureActivity"></activity>
     </application>
 
 </manifest>

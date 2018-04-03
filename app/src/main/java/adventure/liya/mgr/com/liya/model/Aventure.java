@@ -9,6 +9,7 @@ import java.util.List;
 public class Aventure {
     private long id;
     private String libelle;
+    private String description;
     private List<Personnage> personnages;
     private List<Chapitre> chapitres;
 
@@ -28,6 +29,14 @@ public class Aventure {
         this.libelle = libelle;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<Personnage> getPersonnages() {
         return personnages;
     }
@@ -45,9 +54,14 @@ public class Aventure {
     }
 
     public Aventure(){}
-    public Aventure(long id, String libelle, List<Personnage> personnages, List<Chapitre> histoires) {
+    public Aventure(String libelle, String description){
+        this.libelle = libelle;
+        this.description = description;
+    }
+    public Aventure(long id, String libelle,String description, List<Personnage> personnages, List<Chapitre> histoires) {
         this.id = id;
         this.libelle = libelle;
+        this.description = description;
         this.personnages = personnages;
         this.chapitres = histoires;
     }
