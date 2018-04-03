@@ -10,7 +10,7 @@ public class Aventure {
     private long id;
     private String libelle;
     private List<Personnage> personnages;
-    private List<Histoire> histoires;
+    private List<Chapitre> chapitres;
 
     public long getId() {
         return id;
@@ -36,19 +36,19 @@ public class Aventure {
         this.personnages = personnages;
     }
 
-    public List<Histoire> getHistoires() {
-        return histoires;
+    public List<Chapitre> getHistoires() {
+        return chapitres;
     }
 
-    public void setHistoires(List<Histoire> histoires) {
-        this.histoires = histoires;
+    public void setHistoires(List<Chapitre> histoires) {
+        this.chapitres = histoires;
     }
 
     public Aventure(){}
-    public Aventure(long id, String libelle, List<Personnage> personnages, List<Histoire> histoires) {
+    public Aventure(long id, String libelle, List<Personnage> personnages, List<Chapitre> histoires) {
         this.id = id;
         this.libelle = libelle;
         this.personnages = personnages;
-        this.histoires = histoires;
+        this.chapitres = histoires;
     }
 }

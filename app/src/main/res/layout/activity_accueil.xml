@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center">
 
         <!--<TextView-->
@@ -34,10 +34,11 @@
         android:layout_weight="1"
         android:gravity="center">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:src="@drawable/bouton_nouveau" />
 
 
@@ -49,10 +50,11 @@
         android:layout_weight="1"
         android:gravity="center">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:src="@drawable/bouton_continue" />
 
 
@@ -63,10 +65,11 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:src="@drawable/bouton_quit" />
 
     </LinearLayout>

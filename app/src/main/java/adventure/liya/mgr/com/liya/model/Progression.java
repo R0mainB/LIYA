@@ -10,7 +10,7 @@ public class Progression {
     private long id;
     private Personnage personnage;
     private Aventure aventure;
-    private Histoire histoire;
+    private Chapitre chapitre;
     private List<Action> actions;
 
     public long getId() {
@@ -37,12 +37,12 @@ public class Progression {
         this.aventure = aventure;
     }
 
-    public Histoire getHistoire() {
-        return histoire;
+    public Chapitre getHistoire() {
+        return chapitre;
     }
 
-    public void setHistoire(Histoire histoire) {
-        this.histoire = histoire;
+    public void setHistoire(Chapitre histoire) {
+        this.chapitre = histoire;
     }
 
     public List<Action> getActions() {
@@ -54,11 +54,11 @@ public class Progression {
     }
 
     public Progression(){}
-    public Progression(long id, Personnage personnage, Aventure aventure, Histoire histoire, List<Action> actions) {
+    public Progression(long id, Personnage personnage, Aventure aventure, Chapitre chapitre, List<Action> actions) {
         this.id = id;
         this.personnage = personnage;
         this.aventure = aventure;
-        this.histoire = histoire;
+        this.chapitre = chapitre;
         this.actions = actions;
     }
 }
