@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".ecran.ActionActivity" />
         <activity android:name=".ecran.CombatActivity" />
-        <activity android:name=".ecran.SelectionAventureActivity"></activity>
+        <activity android:name=".ecran.SelectionAventureActivity" />
+        <activity android:name=".ecran.DetailAventureActivity" />
     </application>
 
 </manifest>

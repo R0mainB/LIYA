@@ -11,4 +11,7 @@
     <string name="text_btnAction_3">btnAction3</string>
     <string name="text_btnAction_4">btnAction4</string>
     <string name="sigle_app">LIYA</string>
+    <string name="quitter_jeu">Cliquer pour quitter le jeu.</string>
+    <string name="continuer_jeu">CLiquer pour continuer une partie.</string>
+    <string name="nouveau_jeu">Cliquer pour commencer une nouvelle partie.</string>
 </resources>

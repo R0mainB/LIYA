@@ -1,7 +1,9 @@
 package adventure.liya.mgr.com.liya.ecran;
 
         import android.content.Intent;
+        import android.content.Intent;
         import android.content.res.Configuration;
+        import android.media.Image;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.util.Log;
@@ -10,6 +12,9 @@ package adventure.liya.mgr.com.liya.ecran;
         import android.widget.LinearLayout;
 
         import adventure.liya.mgr.com.liya.R;
+        import adventure.liya.mgr.com.liya.enumeration.DesEnum;
+        import adventure.liya.mgr.com.liya.tools.GestionDes;
+        import adventure.liya.mgr.com.liya.tools.GestionEcran;
 
 public class AccueilActivity extends AppCompatActivity {
 
@@ -33,12 +38,23 @@ public class AccueilActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        LinearLayout espace = findViewById(R.id.espace_portrait);
+        // Gestion du design
+        GestionEcran gestionEcran = new GestionEcran(this, AccueilActivity.this);
+        gestionEcran.designAccueil();
 
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            espace.setVisibility(View.GONE);
-        } else {
-            espace.setVisibility(View.VISIBLE);
-        }
+        ImageButton btnContinuer = findViewById(R.id.btn_continuer);
+
+        btnContinuer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AccueilActivity.this, DetailAventureActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void fermerApplication(View view) {
+        finish();
+        moveTaskToBack(true);
     }
 }
