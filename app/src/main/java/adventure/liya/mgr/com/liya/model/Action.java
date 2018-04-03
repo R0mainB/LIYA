@@ -6,6 +6,7 @@ package adventure.liya.mgr.com.liya.model;
 
 public class Action {
     private long id;
+    private String titre;
     private String description;
 
     public long getId() {
@@ -20,13 +21,22 @@ public class Action {
         return description;
     }
 
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
 
     public Action(){}
-    public Action(long id, String description) {
+    public Action(long id, String titre, String description) {
         this.id = id;
+        this.titre = titre;
         this.description = description;
     }
 }

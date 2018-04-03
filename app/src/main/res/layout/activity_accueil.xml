@@ -4,21 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    android:background="@drawable/fond_menu"
+    android:background="@drawable/back_app"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="5"
         android:gravity="center">
-
-        <!--<TextView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/nom_appli"-->
-            <!--style="@style/TitreAppli"-->
-            <!--android:gravity="center"/>-->
 
         <ImageView
             android:layout_width="match_parent"
@@ -29,9 +22,19 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/espace_portrait"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_weight="2">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:gravity="center">
 
         <ImageButton
@@ -47,7 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center">
 
         <ImageButton
@@ -63,7 +66,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="2">
 
         <ImageButton
             android:layout_width="wrap_content"

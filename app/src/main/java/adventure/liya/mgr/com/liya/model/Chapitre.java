@@ -27,6 +27,13 @@ public class Chapitre {
         this.description = description;
     }
 
+    public List<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(List<Action> actions) {
+        this.actions = actions;
+    }
 
     public Chapitre(){}
 

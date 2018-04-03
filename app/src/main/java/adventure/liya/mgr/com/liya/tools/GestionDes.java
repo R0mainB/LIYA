@@ -2,63 +2,46 @@ package adventure.liya.mgr.com.liya.tools;
 
 import java.util.Random;
 
+import adventure.liya.mgr.com.liya.enumeration.DesEnum;
+import adventure.liya.mgr.com.liya.enumeration.ResultatDesEnum;
+
 /**
- * Created by Maxouxou on 02/04/2018.
+ * Created by rbonhomme2016 on 03/04/2018.
  */
 
 public class GestionDes {
 
+    // Score minimum possible au dés
     private final int MIN_DES = 1;
 
-    private final int MIN_ECHECRIT_100 = 96;
-    private final int MAX_REUSSICRIT_100 = 5;
+    // Résultat du lancé de dés
+    private int resultat;
 
-    private final int DES_6_MAX = 6;
-    private final int DES_100_MAX =100;
+    // Type de résultat (critique, normal, etc)
+    private ResultatDesEnum type;
 
-
-    public Integer selectionnerDes(Enum.eDes des){
-        int nbrFace = 0;
-        switch (des){
-            case FACE6:
-                nbrFace = DES_6_MAX;
-                break;
-            case FACE100:
-                nbrFace = DES_100_MAX;
-                break;
-        }
-        return nbrFace;
+    public GestionDes() {
     }
 
-    public Integer lancerDes(int des){
+    public int getResultat() {
+        return resultat;
+    }
+
+    public ResultatDesEnum getType() {
+        return type;
+    }
+
+    public void lancerDes(DesEnum des){
         Random rand = new Random();
-        return rand.nextInt(des + MIN_DES);
+        this.resultat = rand.nextInt(des.getNbFaces() + MIN_DES);
+
+        if (this.resultat <= des.getTauxReussiteCritique()) {
+            this.type = ResultatDesEnum.REUSSITE_CRITIQUE;
+        } else if (this.resultat >= des.getTauxEchecCritique()) {
+            this.type = ResultatDesEnum.ECHEC_CRITIQUE;
+        } else {
+            this.type = ResultatDesEnum.NORMAL;
+        }
+
     }
-
-    public Boolean gererReussiteCritique(int des,int resultDes){
-        Boolean isReussite = false;
-
-        if(des == DES_6_MAX && resultDes == MIN_DES){
-            isReussite= true;
-        }
-        if(des == DES_100_MAX && resultDes >= MIN_DES && resultDes <= MAX_REUSSICRIT_100){
-            isReussite= true;
-        }
-
-        return isReussite;
-    }
-
-    public Boolean gererEchecCritique(int des,int resultDes){
-        Boolean isEchec = false;
-
-        if(des == DES_6_MAX && resultDes == DES_6_MAX){
-            isEchec= true;
-        }
-        if(des == DES_100_MAX && resultDes >= MIN_ECHECRIT_100 && resultDes <= DES_100_MAX){
-            isEchec= true;
-        }
-
-        return isEchec;
-    }
-
 }
