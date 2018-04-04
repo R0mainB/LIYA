@@ -2,6 +2,7 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class Peripetie {
     private long id;
     @ColumnInfo(name = "DESCRIPTION")
     private String description;
+    @Ignore
     private List<Action> actions;
 
     public long getId() {
@@ -45,6 +47,7 @@ public class Peripetie {
 
     public Peripetie(){}
 
+    @Ignore
     public Peripetie(long id, String description) {
         this.id = id;
         this.description = description;

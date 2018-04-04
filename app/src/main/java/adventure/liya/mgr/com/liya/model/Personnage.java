@@ -3,6 +3,7 @@ package adventure.liya.mgr.com.liya.model;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
@@ -29,14 +30,18 @@ public class Personnage {
     @ColumnInfo(name = "EST_HEROS")
     private boolean heros;
 
+    @Ignore
     private List<Equipement> equipements;
+    @Ignore
     private List<Sortilege> sortileges;
+    @Ignore
     private List<Statistique> statistiques;
     private int niveau;
 
     public Personnage() {
     }
 
+    @Ignore
     public Personnage(long id, String nom, int pointVie, int pointMagie, String classe, boolean heros, List<Equipement> equipements,
                       List<Sortilege> sortileges, List<Statistique> statistiques, int niveau) {
         this.id = id;

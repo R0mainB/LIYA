@@ -2,9 +2,13 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.TypeConverters;
 
 import adventure.liya.mgr.com.liya.enumeration.EffetEnum;
+import adventure.liya.mgr.com.liya.tools.EffetConvertisseur;
 
 @Entity(tableName = "T_EFFET")
 public class Effet {
@@ -14,6 +18,7 @@ public class Effet {
     @ColumnInfo(name = "LIBELLE")
     private String libelle;
     @ColumnInfo(name = "POUVOIR")
+    @TypeConverters(EffetConvertisseur.class)
     private EffetEnum pouvoir;
     @ColumnInfo(name = "VALEUR")
     private float valeur;
@@ -21,6 +26,7 @@ public class Effet {
     public Effet() {
     }
 
+    @Ignore
     public Effet(long id, String libelle, EffetEnum pouvoir, float valeur) {
         this.id = id;
         this.libelle = libelle;

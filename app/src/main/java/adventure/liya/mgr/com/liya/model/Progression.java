@@ -2,6 +2,7 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
@@ -18,13 +19,17 @@ public class Progression {
     private long id;
     @ColumnInfo(name = "ID_PERSONNAGE")
     private long idPersonnage;
+    @Ignore
     private Personnage personnage;
     @ColumnInfo(name = "ID_AVENTURE")
     private long idAventure;
+    @Ignore
     private Aventure aventure;
     @ColumnInfo(name = "ID_PERIPETIE")
     private long idPeripetie;
+    @Ignore
     private Peripetie peripetie;
+    @Ignore
     private List<Action> actions;
 
     public Progression() {

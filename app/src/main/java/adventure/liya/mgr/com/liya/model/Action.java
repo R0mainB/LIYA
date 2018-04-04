@@ -2,6 +2,7 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -43,6 +44,8 @@ public class Action {
     }
 
     public Action(){}
+
+    @Ignore
     public Action(long id, String titre, String description) {
         this.id = id;
         this.titre = titre;

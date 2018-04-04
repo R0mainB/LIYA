@@ -2,6 +2,7 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
@@ -19,7 +20,9 @@ public class Aventure {
     private String libelle;
     @ColumnInfo(name = "DESCRIPTION")
     private String description;
+    @Ignore
     private List<Personnage> personnages;
+    @Ignore
     private List<Peripetie> peripeties;
 
     public long getId() {
@@ -67,6 +70,8 @@ public class Aventure {
         this.libelle = libelle;
         this.description = description;
     }
+
+    @Ignore
     public Aventure(long id, String libelle,String description, List<Personnage> personnages, List<Peripetie> histoires) {
         this.id = id;
         this.libelle = libelle;

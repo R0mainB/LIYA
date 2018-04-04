@@ -3,6 +3,7 @@ package adventure.liya.mgr.com.liya.model.relations;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import adventure.liya.mgr.com.liya.model.Equipement;
@@ -35,6 +36,7 @@ public class EquipementPersonnage {
     public EquipementPersonnage() {
     }
 
+    @Ignore
     public EquipementPersonnage(long id, long idEquipement, long idPersonnage) {
         this.id = id;
         this.idEquipement = idEquipement;

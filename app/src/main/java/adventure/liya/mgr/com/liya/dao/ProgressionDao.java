@@ -1,5 +1,6 @@
 package adventure.liya.mgr.com.liya.dao;
 
+import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import adventure.liya.mgr.com.liya.model.Progression;
 
+@Dao
 public interface ProgressionDao {
 
     String TABLE_NAME = "T_PROGRESSION";
