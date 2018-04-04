@@ -1,11 +1,20 @@
 package adventure.liya.mgr.com.liya.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
 
+@Entity(tableName = "T_EQUIPEMENT")
 public class Equipement {
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
     private long id;
+    @ColumnInfo(name = "NOM")
     private String nom;
+    @ColumnInfo(name = "NIVEAU_POUR_EQUIPER")
     private int niveauPourEquiper;
     private List<Statistique> statistiques;
 

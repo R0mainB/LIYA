@@ -1,9 +1,18 @@
 package adventure.liya.mgr.com.liya.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity(tableName = "T_SORTILEGE")
 public class Sortilege {
 
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
     private long id;
+    @ColumnInfo(name = "LIBELLE")
     private String libelle;
+    @ColumnInfo(name = "COUT")
     private int cout;
 
     public Sortilege() {

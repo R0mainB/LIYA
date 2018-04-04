@@ -1,17 +1,26 @@
 package adventure.liya.mgr.com.liya.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
 
 /**
  * Created by Maxouxou on 03/04/2018.
  */
 
+@Entity(tableName = "T_AVENTURE")
 public class Aventure {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
     private long id;
+    @ColumnInfo(name = "LIBELLE")
     private String libelle;
+    @ColumnInfo(name = "DESCRIPTION")
     private String description;
     private List<Personnage> personnages;
-    private List<Chapitre> chapitres;
+    private List<Peripetie> peripeties;
 
     public long getId() {
         return id;
@@ -45,12 +54,12 @@ public class Aventure {
         this.personnages = personnages;
     }
 
-    public List<Chapitre> getHistoires() {
-        return chapitres;
+    public List<Peripetie> getHistoires() {
+        return peripeties;
     }
 
-    public void setHistoires(List<Chapitre> histoires) {
-        this.chapitres = histoires;
+    public void setHistoires(List<Peripetie> histoires) {
+        this.peripeties = histoires;
     }
 
     public Aventure(){}
@@ -58,11 +67,11 @@ public class Aventure {
         this.libelle = libelle;
         this.description = description;
     }
-    public Aventure(long id, String libelle,String description, List<Personnage> personnages, List<Chapitre> histoires) {
+    public Aventure(long id, String libelle,String description, List<Personnage> personnages, List<Peripetie> histoires) {
         this.id = id;
         this.libelle = libelle;
         this.description = description;
         this.personnages = personnages;
-        this.chapitres = histoires;
+        this.peripeties = histoires;
     }
 }

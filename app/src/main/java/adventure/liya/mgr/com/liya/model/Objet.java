@@ -4,24 +4,28 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "T_STATISTIQUE")
-public class Statistique {
+import java.util.List;
+
+@Entity(tableName = "T_OBJET")
+public class Objet {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private long id;
     @ColumnInfo(name = "LIBELLE")
     private String libelle;
-    @ColumnInfo(name = "POURCENTAGE")
-    private int pourcentage;
+    @ColumnInfo(name = "DESCRIPTION")
+    private String description;
+    private List<Effet> effets;
 
-    public Statistique() {
+    public Objet() {
     }
 
-    public Statistique(long id, String libelle, int pourcentage) {
+    public Objet(long id, String libelle, String description, List<Effet> effets) {
         this.id = id;
         this.libelle = libelle;
-        this.pourcentage = pourcentage;
+        this.description = description;
+        this.effets = effets;
     }
 
     public long getId() {
@@ -40,11 +44,19 @@ public class Statistique {
         this.libelle = libelle;
     }
 
-    public int getPourcentage() {
-        return pourcentage;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPourcentage(int pourcentage) {
-        this.pourcentage = pourcentage;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Effet> getEffets() {
+        return effets;
+    }
+
+    public void setEffets(List<Effet> effets) {
+        this.effets = effets;
     }
 }

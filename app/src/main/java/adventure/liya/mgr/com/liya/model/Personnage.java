@@ -1,21 +1,55 @@
 package adventure.liya.mgr.com.liya.model;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.PrimaryKey;
+
 import java.util.List;
+
+import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 /**
  * Created by Maxouxou on 03/04/2018.
  */
 
+@Entity(tableName = "T_PERSONNAGE")
 public class Personnage {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
     private long id;
+    @ColumnInfo(name = "NOM")
     private String nom;
+    @ColumnInfo(name = "POINT_DE_VIE")
     private int pointVie;
+    @ColumnInfo(name = "POINT_DE_MAGIE")
     private int pointMagie;
-    private Classe classe;
+    @ColumnInfo(name = "CLASSE")
+    private String classe;
+    @ColumnInfo(name = "EST_HEROS")
+    private boolean heros;
+
     private List<Equipement> equipements;
     private List<Sortilege> sortileges;
     private List<Statistique> statistiques;
     private int niveau;
+
+    public Personnage() {
+    }
+
+    public Personnage(long id, String nom, int pointVie, int pointMagie, String classe, boolean heros, List<Equipement> equipements,
+                      List<Sortilege> sortileges, List<Statistique> statistiques, int niveau) {
+        this.id = id;
+        this.nom = nom;
+        this.pointVie = pointVie;
+        this.pointMagie = pointMagie;
+        this.classe = classe;
+        this.heros = heros;
+        this.equipements = equipements;
+        this.sortileges = sortileges;
+        this.statistiques = statistiques;
+        this.niveau = niveau;
+    }
 
     public long getId() {
         return id;
@@ -49,12 +83,20 @@ public class Personnage {
         this.pointMagie = pointMagie;
     }
 
-    public Classe getClasse() {
+    public String getClasse() {
         return classe;
     }
 
-    public void setClasse(Classe classe) {
+    public void setClasse(String classe) {
         this.classe = classe;
+    }
+
+    public boolean isHeros() {
+        return heros;
+    }
+
+    public void setHeros(boolean heros) {
+        this.heros = heros;
     }
 
     public List<Equipement> getEquipements() {
@@ -86,19 +128,6 @@ public class Personnage {
     }
 
     public void setNiveau(int niveau) {
-        this.niveau = niveau;
-    }
-
-    public Personnage(){}
-    public Personnage(long id, String nom, int pointVie, int pointMagie, Classe classe, List<Equipement> equipements, List<Sortilege> sortileges, List<Statistique> statistiques, int niveau) {
-        this.id = id;
-        this.nom = nom;
-        this.pointVie = pointVie;
-        this.pointMagie = pointMagie;
-        this.classe = classe;
-        this.equipements = equipements;
-        this.sortileges = sortileges;
-        this.statistiques = statistiques;
         this.niveau = niveau;
     }
 }
