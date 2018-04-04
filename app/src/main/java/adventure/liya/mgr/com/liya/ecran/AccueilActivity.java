@@ -41,16 +41,6 @@ public class AccueilActivity extends AppCompatActivity {
         // Gestion du design
         GestionEcran gestionEcran = new GestionEcran(this, AccueilActivity.this);
         gestionEcran.designAccueil();
-
-        ImageButton btnContinuer = findViewById(R.id.btn_continuer);
-
-        btnContinuer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AccueilActivity.this, DetailAventureActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void fermerApplication(View view) {
