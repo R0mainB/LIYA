@@ -8,6 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
+        android:id="@+id/detail_titre_aventure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/TitreAppli"
@@ -56,6 +57,7 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/detail_desc_aventure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description de l'histoire qui commençais bien mais ou finalement c'est le bordel et t'es le héros donc bon courage pour sauver la princesse qui veut juste un nouvel iphone X alors que cette application est sur android alors qu'elle se casse la mégère perso j'ai de l'argent à faire. Merci et bonne année."
@@ -71,16 +73,20 @@
         android:gravity="bottom">
 
         <Button
+            android:id="@+id/detail_btn_annuler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Annuler"/>
+            android:onClick="annuler"
+            android:text="@string/annuler"/>
 
         <Button
+            android:id="@+id/detail_btn_commencer"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Commencer"/>
+            android:onClick="commencer"
+            android:text="@string/choix_perso"/>
 
     </LinearLayout>
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -32,7 +33,6 @@ public class SelectionAventureActivity extends AppCompatActivity {
         AventureAdapter adapter = new AventureAdapter(SelectionAventureActivity.this,aventures);
         lv.setAdapter(adapter);
 
-
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -40,6 +40,15 @@ public class SelectionAventureActivity extends AppCompatActivity {
                 Intent intent = new Intent(SelectionAventureActivity.this,DetailAventureActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);
+            }
+        });
+
+        final Button btnAnnuler = findViewById(R.id.btn_select_av_annuler);
+
+        btnAnnuler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

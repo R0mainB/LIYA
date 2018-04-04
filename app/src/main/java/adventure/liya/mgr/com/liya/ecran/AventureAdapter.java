@@ -17,7 +17,7 @@ import adventure.liya.mgr.com.liya.R;
 
 public class AventureAdapter extends ArrayAdapter<Aventure> {
 
-    public AventureAdapter(@NonNull Context context, @NonNull List<Aventure> aventures) {
+    AventureAdapter(@NonNull Context context, @NonNull List<Aventure> aventures) {
         super(context, 0, aventures);
     }
 
@@ -32,8 +32,7 @@ public class AventureAdapter extends ArrayAdapter<Aventure> {
         AventureViewHolder viewHolder = (AventureViewHolder) convertView.getTag();
         if(viewHolder==null){
             viewHolder = new AventureViewHolder();
-            viewHolder.nomAventure = (TextView) convertView.findViewById(R.id.txt_nom_aventure);
-            viewHolder.description = (TextView) convertView.findViewById(R.id.txt_description_aventure);
+            viewHolder.nomAventure = convertView.findViewById(R.id.txt_nom_aventure);
             convertView.setTag(viewHolder);
         }
         //getItem(position) va récupérer l'item [position] de la List<Tweet> tweets
@@ -41,13 +40,11 @@ public class AventureAdapter extends ArrayAdapter<Aventure> {
 
         //il ne reste plus qu'à remplir notre vue
         viewHolder.nomAventure.setText(aventure.getLibelle());
-        viewHolder.description.setText(aventure.getDescription());
 
         return convertView;
     }
 
     private class AventureViewHolder{
-        public TextView nomAventure;
-        public TextView description;
+        TextView nomAventure;
     }
 }

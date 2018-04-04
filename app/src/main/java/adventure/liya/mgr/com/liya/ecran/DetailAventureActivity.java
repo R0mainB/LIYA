@@ -1,9 +1,11 @@
 package adventure.liya.mgr.com.liya.ecran;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -26,5 +28,15 @@ public class DetailAventureActivity extends AppCompatActivity {
         GestionEcran gestionEcran = new GestionEcran(this, DetailAventureActivity.this);
         gestionEcran.designDetailAventure();
 
+
+    }
+
+    public void annuler(View view) {
+        finish();
+    }
+
+    public void commencer(View view) {
+        Intent intent = new Intent(DetailAventureActivity.this, SelectionHerosActivity.class);
+        startActivity(intent);
     }
 }
