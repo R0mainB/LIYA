@@ -15,20 +15,24 @@ public class Equipement {
     private long id;
     @ColumnInfo(name = "NOM")
     private String nom;
-    @ColumnInfo(name = "NIVEAU_POUR_EQUIPER")
-    private int niveauPourEquiper;
-    @Ignore
-    private List<Statistique> statistiques;
+    @ColumnInfo(name = "TYPE")
+    private String type;
+    @ColumnInfo(name = "BONUS")
+    private int bonus;
+    @ColumnInfo(name = "NIVEAU_REQUIS")
+    private int niveauRequis;
+
 
     public Equipement() {
     }
 
     @Ignore
-    public Equipement(long id, String nom, int niveauPourEquiper, List<Statistique> statistiques) {
+    public Equipement(long id, String nom, String type, int bonus, int niveauRequis) {
         this.id = id;
         this.nom = nom;
-        this.niveauPourEquiper = niveauPourEquiper;
-        this.statistiques = statistiques;
+        this.type = type;
+        this.bonus = bonus;
+        this.niveauRequis = niveauRequis;
     }
 
     public long getId() {
@@ -47,19 +51,27 @@ public class Equipement {
         this.nom = nom;
     }
 
-    public int getNiveauPourEquiper() {
-        return niveauPourEquiper;
+    public String getType() {
+        return type;
     }
 
-    public void setNiveauPourEquiper(int niveauPourEquiper) {
-        this.niveauPourEquiper = niveauPourEquiper;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public List<Statistique> getStatistiques() {
-        return statistiques;
+    public int getBonus() {
+        return bonus;
     }
 
-    public void setStatistiques(List<Statistique> statistiques) {
-        this.statistiques = statistiques;
+    public void setBonus(int bonus) {
+        this.bonus = bonus;
+    }
+
+    public int getNiveauRequis() {
+        return niveauRequis;
+    }
+
+    public void setNiveauRequis(int niveauRequis) {
+        this.niveauRequis = niveauRequis;
     }
 }

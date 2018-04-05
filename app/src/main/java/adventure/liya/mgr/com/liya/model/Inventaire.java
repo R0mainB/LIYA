@@ -2,7 +2,10 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+
+import java.util.List;
 
 /**
  * Created by rbonhomme2016 on 04/04/2018.
@@ -14,18 +17,25 @@ public class Inventaire {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
     private long id;
-    @ColumnInfo(name = "LIBELLE")
-    private String libelle;
-    @ColumnInfo(name = "NB_PLACES")
-    private int nbPlaces;
+    @ColumnInfo(name = "NOM")
+    private String nom;
+    @ColumnInfo(name = "NB_SLOT")
+    private int nbSlot;
+    @Ignore
+    private List<Equipement> equipements;
+    @Ignore
+    private List<Objet> objets;
 
     public Inventaire() {
     }
 
-    public Inventaire(long id, String libelle, int nbPlaces) {
+    @Ignore
+    public Inventaire(long id, String nom, int nbSlot, List<Equipement> equipements, List<Objet> objets) {
         this.id = id;
-        this.libelle = libelle;
-        this.nbPlaces = nbPlaces;
+        this.nom = nom;
+        this.nbSlot = nbSlot;
+        this.equipements = equipements;
+        this.objets = objets;
     }
 
     public long getId() {
@@ -36,19 +46,35 @@ public class Inventaire {
         this.id = id;
     }
 
-    public String getLibelle() {
-        return libelle;
+    public String getNom() {
+        return nom;
     }
 
-    public void setLibelle(String libelle) {
-        this.libelle = libelle;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public int getNbPlaces() {
-        return nbPlaces;
+    public int getNbSlot() {
+        return nbSlot;
     }
 
-    public void setNbPlaces(int nbPlaces) {
-        this.nbPlaces = nbPlaces;
+    public void setNbSlot(int nbSlot) {
+        this.nbSlot = nbSlot;
+    }
+
+    public List<Equipement> getEquipements() {
+        return equipements;
+    }
+
+    public void setEquipements(List<Equipement> equipements) {
+        this.equipements = equipements;
+    }
+
+    public List<Objet> getObjets() {
+        return objets;
+    }
+
+    public void setObjets(List<Objet> objets) {
+        this.objets = objets;
     }
 }

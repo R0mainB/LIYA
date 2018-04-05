@@ -25,8 +25,8 @@ public interface InventaireDao {
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
     Inventaire getInventaireById(int id);
 
-    @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
-    Inventaire getInventaireByLibelle(String libelle);
+    @Query("SELECT * FROM " + TABLE_NAME + " WHERE NOM = :nom")
+    Inventaire getInventaireByLibelle(String nom);
 
     @Insert
     void insert(Inventaire... inventaires);

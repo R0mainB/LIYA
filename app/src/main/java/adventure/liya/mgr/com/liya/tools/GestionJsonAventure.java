@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import adventure.liya.mgr.com.liya.enumeration.EffetEnum;
 import adventure.liya.mgr.com.liya.model.Action;
 import adventure.liya.mgr.com.liya.model.Aventure;
 import adventure.liya.mgr.com.liya.model.Effet;
@@ -213,8 +214,8 @@ public class GestionJsonAventure {
     private static Inventaire creerInventaire(JSONObject json){
         Inventaire i = new Inventaire();
         try {
-            i.setLibelle(json.getString(INVENTAIRE_NOM));
-            i.setNbSlot(json.getString(INVENTAIRE_NB_SLOT));
+            i.setNom(json.getString(INVENTAIRE_NOM));
+            i.setNbSlot(json.getInt(INVENTAIRE_NB_SLOT));
             i.setEquipements((List<Equipement>) (Equipement) chargerListe(json.getJSONArray(NOEUD_EQUIPEMENT),NOEUD_EQUIPEMENT));
             i.setObjets((List<Objet>) (Objet) chargerListe(json.getJSONArray(NOEUD_EQUIPEMENT),NOEUD_EQUIPEMENT));
         } catch (JSONException e) {
@@ -228,8 +229,8 @@ public class GestionJsonAventure {
         try {
             equip.setNom(json.getString(EQUIPEMENT_NOM));
             equip.setType(json.getString(EQUIPEMENT_TYPE));
-            equip.setBonus(json.getString(EQUIPEMENT_BONUS));
-            equip.setNiveauRequis(json.getString(EQUIPEMENT_LVL_REQUIS));
+            equip.setBonus(json.getInt(EQUIPEMENT_BONUS));
+            equip.setNiveauRequis(json.getInt(EQUIPEMENT_LVL_REQUIS));
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -250,7 +251,7 @@ public class GestionJsonAventure {
         Effet effet = new Effet();
         try {
             effet.setLibelle(json.getString(EFFET_LIBELLE));
-            effet.setPouvoir(json.getInt(EFFET_POUVOIR));
+            effet.setPouvoir(EffetEnum.getEnumStringValeur(json.getString(EFFET_POUVOIR)));
             effet.setValeur(json.getInt(EFFET_VALEUR));
         } catch (JSONException e) {
             e.printStackTrace();

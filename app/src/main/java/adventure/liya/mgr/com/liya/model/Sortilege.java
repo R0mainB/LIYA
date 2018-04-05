@@ -13,17 +13,23 @@ public class Sortilege {
     private long id;
     @ColumnInfo(name = "LIBELLE")
     private String libelle;
-    @ColumnInfo(name = "COUT")
-    private int cout;
+    @ColumnInfo(name = "COUT_MAGIE")
+    private int coutMagie;
+    @ColumnInfo(name = "DEGAT_MIN")
+    private int degatMin;
+    @ColumnInfo(name = "NIVEAU_REQUIS")
+    private int niveauRequis;
 
     public Sortilege() {
     }
 
     @Ignore
-    public Sortilege(long id, String libelle, int cout) {
+    public Sortilege(long id, String libelle, int coutMagie, int degatMin, int niveauRequis) {
         this.id = id;
         this.libelle = libelle;
-        this.cout = cout;
+        this.coutMagie = coutMagie;
+        this.degatMin = degatMin;
+        this.niveauRequis = niveauRequis;
     }
 
     public long getId() {
@@ -42,11 +48,27 @@ public class Sortilege {
         this.libelle = libelle;
     }
 
-    public int getCout() {
-        return cout;
+    public int getCoutMagie() {
+        return coutMagie;
     }
 
-    public void setCout(int cout) {
-        this.cout = cout;
+    public void setCoutMagie(int coutMagie) {
+        this.coutMagie = coutMagie;
+    }
+
+    public int getDegatMin() {
+        return degatMin;
+    }
+
+    public void setDegatMin(int degatMin) {
+        this.degatMin = degatMin;
+    }
+
+    public int getNiveauRequis() {
+        return niveauRequis;
+    }
+
+    public void setNiveauRequis(int niveauRequis) {
+        this.niveauRequis = niveauRequis;
     }
 }
