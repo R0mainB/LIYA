@@ -13,10 +13,13 @@ package adventure.liya.mgr.com.liya.ecran;
 
         import adventure.liya.mgr.com.liya.R;
         import adventure.liya.mgr.com.liya.enumeration.DesEnum;
+        import adventure.liya.mgr.com.liya.model.Aventure;
         import adventure.liya.mgr.com.liya.tools.GestionDes;
         import adventure.liya.mgr.com.liya.tools.GestionEcran;
+        import adventure.liya.mgr.com.liya.tools.GestionJsonAventure;
 
 public class AccueilActivity extends AppCompatActivity {
+    private Aventure aventure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +40,10 @@ public class AccueilActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        GestionDesign();
+    }
 
-        // Gestion du design
+    public void GestionDesign(){
         GestionEcran gestionEcran = new GestionEcran(this, AccueilActivity.this);
         gestionEcran.designAccueil();
     }

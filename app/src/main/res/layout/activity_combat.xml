@@ -12,67 +12,29 @@
         android:layout_weight="3"
         android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/voleur_01"/>
+
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="allié"
-                android:textColor="@color/blanc"/>
+                android:background="@color/barreVie"/>
 
-            <ProgressBar
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                android:progressBackgroundTint="@color/blanc"
-                android:progressTint="@color/barreVie"
-                android:progress="100"/>
-
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                android:progressBackgroundTint="@color/blanc"
-                android:progressTint="@color/barreMagie"
-                android:progress="100"/>
+                android:background="@color/barreMagie"/>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ennemie (noob)"
-                android:textColor="@color/blanc"/>
-
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                android:progressBackgroundTint="@color/blanc"
-                android:progressTint="@color/barreVie"
-                android:progress="100"/>
-
-            <ProgressBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                android:progressBackgroundTint="@color/blanc"
-                android:progressTint="@color/barreMagie"
-                android:progress="100"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -81,8 +43,12 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-
-
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+    </LinearLayout>
 </LinearLayout>
