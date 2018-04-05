@@ -38,7 +38,7 @@ public class Progression {
     @ColumnInfo(name = "ID")
     private long id;
     @ColumnInfo(name = "DATE_ACTION")
-    private Date dateAction;
+    private String dateAction;
     @ColumnInfo(name = "ID_PERSONNAGE")
     private long idPersonnage;
     @ColumnInfo(name = "ID_AVENTURE")
@@ -54,7 +54,7 @@ public class Progression {
     }
 
     @Ignore
-    public Progression(long id, Date dateAction, long idPersonnage, long idAventure, long idPeripetie, long idInventaire, int niveauPersonnage) {
+    public Progression(long id, String dateAction, long idPersonnage, long idAventure, long idPeripetie, long idInventaire, int niveauPersonnage) {
         this.id = id;
         this.dateAction = dateAction;
         this.idPersonnage = idPersonnage;
@@ -72,11 +72,11 @@ public class Progression {
         this.id = id;
     }
 
-    public Date getDateAction() {
+    public String getDateAction() {
         return dateAction;
     }
 
-    public void setDateAction(Date dateAction) {
+    public void setDateAction(String dateAction) {
         this.dateAction = dateAction;
     }
 

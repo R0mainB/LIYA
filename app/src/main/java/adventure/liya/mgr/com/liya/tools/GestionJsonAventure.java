@@ -81,7 +81,6 @@ public class GestionJsonAventure {
 
     private static final String NOEUD_ACTIONS = "actions";
     private static final String ACTION_TITRE ="titre";
-    private static final String ACTION_DESCRIPTION = "description";
 
     public static void lireJsonAventure(final Aventure aventure,Context context, String url){
         JsonObjectRequest request = new JsonObjectRequest(
@@ -204,7 +203,6 @@ public class GestionJsonAventure {
         Action a = new Action();
         try {
             a.setTitre(json.getString(ACTION_TITRE));
-            a.setDescription(json.getString(ACTION_DESCRIPTION));
         } catch (JSONException e) {
             e.printStackTrace();
         }
