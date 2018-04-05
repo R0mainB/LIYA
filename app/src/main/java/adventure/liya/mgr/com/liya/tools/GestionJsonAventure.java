@@ -18,8 +18,13 @@ import java.util.List;
 
 import adventure.liya.mgr.com.liya.model.Action;
 import adventure.liya.mgr.com.liya.model.Aventure;
+import adventure.liya.mgr.com.liya.model.Effet;
+import adventure.liya.mgr.com.liya.model.Equipement;
+import adventure.liya.mgr.com.liya.model.Inventaire;
+import adventure.liya.mgr.com.liya.model.Objet;
 import adventure.liya.mgr.com.liya.model.Peripetie;
 import adventure.liya.mgr.com.liya.model.Personnage;
+import adventure.liya.mgr.com.liya.model.Sortilege;
 import adventure.liya.mgr.com.liya.model.Statistique;
 
 /**
@@ -37,7 +42,34 @@ public class GestionJsonAventure {
     private static final String PERSONNAGE_MAGIE = "pointMagie";
     private static final String PERSONNAGE_CLASSE = "classe";
     private static final String PERSONNAGE_HEROS = "estHeros";
-    private static final String PERSONNAGE_NIVEAU = "niveau";
+
+    private static final String NOEUD_SPECIALITE = "specialite";
+    private static final String SPECIALITE_STATISTIQUE = "libelle";
+
+    private static final String NOEUD_SORTILEGES = "sortileges";
+    private static final String SORTILEGES_LIBELLE = "libelle";
+    private static final String SORTILEGES_COUT_MAGIE = "coutMagie";
+    private static final String SORTILEGES_DEGAT_MIN = "degatMin";
+    private static final String SORTILEGES_LVL_REQUIS = "niveauRequis";
+
+    private static final String NOEUD_INVENTAIRE = "inventaire";
+    private static final String INVENTAIRE_NOM = "nom";
+    private static final String INVENTAIRE_NB_SLOT = "nbSlot";
+
+    private static final String NOEUD_EQUIPEMENT = "equipement";
+    private static final String EQUIPEMENT_NOM = "nom";
+    private static final String EQUIPEMENT_TYPE = "type";
+    private static final String EQUIPEMENT_BONUS = "bonus";
+    private static final String EQUIPEMENT_LVL_REQUIS = "niveauRequis";
+
+    private static final String NOEUD_OBJET = "objet";
+    private static final String OBJET_LIBELLE = "libelle";
+    private static final String OBJET_DESCRIPTION= "description";
+
+    private static final String NOEUD_EFFET = "effet";
+    private static final String EFFET_LIBELLE = "libelle";
+    private static final String EFFET_POUVOIR = "pouvoir";
+    private static final String EFFET_VALEUR = "valeur";
 
     private static final String NOEUD_STATISTIQUES = "statistiques";
     private static final String STATISTIQUE_LIBELLE = "libelle";
@@ -83,25 +115,52 @@ public class GestionJsonAventure {
         try {
             aventure.setLibelle(json.getString(AVENTURE_LIBELLE));
             aventure.setDescription(json.getString(AVENTURE_DESCRIPTION));
-            aventure.setPersonnages(chargerPersonnages(json.getJSONArray(NOEUD_PERSONNAGE)));
-            aventure.setHistoires(chargerPeripeties(json.getJSONArray(NOEUD_PERIPETIES)));
+            aventure.setPersonnages((List<Personnage>)(Personnage) chargerListe(json.getJSONArray(NOEUD_PERSONNAGE),NOEUD_PERSONNAGE));
+            aventure.setHistoires((List<Peripetie>) (Peripetie) chargerListe(json.getJSONArray(NOEUD_PERIPETIES),NOEUD_PERIPETIES));
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    //On créer la liste des personnages
-    private static List<Personnage> chargerPersonnages(JSONArray jsonArray){
-        List<Personnage> personnages = new ArrayList<>();
-            try {
-                for(int i = 0; i < jsonArray.length() ;i++){
-                    personnages.add(creerPersonnage(jsonArray.getJSONObject(i)));
+    private static <T> List<T> chargerListe(JSONArray jsonArray, String noeud){
+        List<T> listeObjet = new ArrayList<>();
+        try {
+            for(int i = 0; i < jsonArray.length() ;i++){
+                switch (noeud){
+                    case NOEUD_PERIPETIES:
+                        listeObjet.add((T)creerPeripetie(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_ACTIONS:
+                        listeObjet.add((T)creerAction(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_PERSONNAGE:
+                        listeObjet.add((T)creerPersonnage(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_STATISTIQUES:
+                        listeObjet.add((T)creerStatistique(jsonArray.getJSONObject(i)));
+                    case NOEUD_INVENTAIRE:
+                        listeObjet.add((T)creerInventaire(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_EQUIPEMENT:
+                        listeObjet.add((T)creerEquipement(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_OBJET:
+                        listeObjet.add((T)creerObjet(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_EFFET:
+                        listeObjet.add((T)creerEffet(jsonArray.getJSONObject(i)));
+                        break;
+                    case NOEUD_SORTILEGES:
+                        listeObjet.add((T)creerSortilege(jsonArray.getJSONObject(i)));
+                        break;
                 }
-            } catch (JSONException e) {
-                e.printStackTrace();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return personnages;
+        return listeObjet;
     }
+
     //On créer le personnage à ajouter à la liste
     private static Personnage creerPersonnage(JSONObject json){
         Personnage p = new Personnage();
@@ -111,25 +170,12 @@ public class GestionJsonAventure {
             p.setPointMagie(json.getInt(PERSONNAGE_MAGIE));
             p.setClasse(json.getString(PERSONNAGE_CLASSE));
             p.setHeros(json.getBoolean(PERSONNAGE_HEROS));
-            p.setNiveau(json.getInt(PERSONNAGE_NIVEAU));
-            p.setStatistiques(chargerStatistiques(json.getJSONArray(NOEUD_STATISTIQUES)));
+            p.setStatistiques((List<Statistique>)(Statistique) chargerListe(json.getJSONArray(NOEUD_STATISTIQUES),NOEUD_STATISTIQUES));
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return p;
-    }
-    //On créer la liste de statistique du personnage
-    private static List<Statistique> chargerStatistiques(JSONArray jsonArray){
-        List<Statistique> statistiques = new ArrayList<>();
-        try {
-            for(int i= 0;i <jsonArray.length();i++){
-                statistiques.add(creerStatistique(jsonArray.getJSONObject(i)));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return statistiques;
     }
     //On créer une statistique
     private static Statistique creerStatistique(JSONObject json){
@@ -142,43 +188,18 @@ public class GestionJsonAventure {
         }
         return s;
     }
-    //On créer une liste de péripétie pour l'aventure
-    private static List<Peripetie> chargerPeripeties(JSONArray jsonArray){
-        List<Peripetie> peripeties = new ArrayList<>();
-        try {
-            for(int i= 0;i <jsonArray.length();i++){
-                peripeties.add(creerPeripetie(jsonArray.getJSONObject(i)));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return peripeties;
-    }
     //On créer une péripétie
     private static Peripetie creerPeripetie(JSONObject json){
         Peripetie p = new Peripetie();
         try {
             p.setDescription(json.getString(PERIPETIE_DESCRIPTION));
-            p.setActions(chargerActions(json.getJSONArray(NOEUD_ACTIONS)));
+            p.setActions((List<Action>) (Action) chargerListe(json.getJSONArray(NOEUD_ACTIONS),NOEUD_ACTIONS));
         } catch (JSONException e) {
             e.printStackTrace();
         }
         return p;
     }
-    //On créer la liste d'actions d'une péripétie
-    private static List<Action> chargerActions(JSONArray jsonArray){
-        List<Action> actions = new ArrayList<>();
-        try {
-            for(int i= 0;i <jsonArray.length();i++){
-                actions.add(creerAction(jsonArray.getJSONObject(i),i));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return actions;
-    }
-    //On créer une action
-    private static Action creerAction(JSONObject json,int i){
+    private static Action creerAction(JSONObject json) {
         Action a = new Action();
         try {
             a.setTitre(json.getString(ACTION_TITRE));
@@ -188,7 +209,64 @@ public class GestionJsonAventure {
         }
         return a;
     }
+    //On créer un inventaire
+    private static Inventaire creerInventaire(JSONObject json){
+        Inventaire i = new Inventaire();
+        try {
+            i.setLibelle(json.getString(INVENTAIRE_NOM));
+            i.setNbSlot(json.getString(INVENTAIRE_NB_SLOT));
+            i.setEquipements((List<Equipement>) (Equipement) chargerListe(json.getJSONArray(NOEUD_EQUIPEMENT),NOEUD_EQUIPEMENT));
+            i.setObjets((List<Objet>) (Objet) chargerListe(json.getJSONArray(NOEUD_EQUIPEMENT),NOEUD_EQUIPEMENT));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return i;
+    }
 
-
-
+    private static Equipement creerEquipement(JSONObject json){
+        Equipement equip = new Equipement();
+        try {
+            equip.setNom(json.getString(EQUIPEMENT_NOM));
+            equip.setType(json.getString(EQUIPEMENT_TYPE));
+            equip.setBonus(json.getString(EQUIPEMENT_BONUS));
+            equip.setNiveauRequis(json.getString(EQUIPEMENT_LVL_REQUIS));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return equip;
+    }
+    private static Objet creerObjet(JSONObject json){
+        Objet o = new Objet();
+        try {
+            o.setLibelle(json.getString(OBJET_LIBELLE));
+            o.setDescription(json.getString(OBJET_DESCRIPTION));
+            o.setEffets((List<Effet>) (Effet) chargerListe(json.getJSONArray(NOEUD_EFFET),NOEUD_EFFET));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return o;
+    }
+    private static Effet creerEffet(JSONObject json){
+        Effet effet = new Effet();
+        try {
+            effet.setLibelle(json.getString(EFFET_LIBELLE));
+            effet.setPouvoir(json.getInt(EFFET_POUVOIR));
+            effet.setValeur(json.getInt(EFFET_VALEUR));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return effet;
+    }
+    private static Sortilege creerSortilege(JSONObject json){
+        Sortilege s = new Sortilege();
+        try {
+            s.setLibelle(json.getString(SORTILEGES_LIBELLE));
+            s.setCoutMagie(json.getInt(SORTILEGES_COUT_MAGIE));
+            s.setDegatMin(json.getInt(SORTILEGES_DEGAT_MIN));
+            s.setNiveauRequis(json.getInt(SORTILEGES_LVL_REQUIS));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
 }
