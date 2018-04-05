@@ -16,8 +16,6 @@ public class Action {
     private long id;
     @ColumnInfo(name = "TITRE")
     private String titre;
-    @ColumnInfo(name = "DESCRIPTION")
-    private String description;
 
     public long getId() {
         return id;
@@ -25,10 +23,6 @@ public class Action {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public String getTitre() {
@@ -39,16 +33,11 @@ public class Action {
         this.titre = titre;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Action(){}
 
     @Ignore
-    public Action(long id, String titre, String description) {
+    public Action(long id, String titre) {
         this.id = id;
         this.titre = titre;
-        this.description = description;
     }
 }
