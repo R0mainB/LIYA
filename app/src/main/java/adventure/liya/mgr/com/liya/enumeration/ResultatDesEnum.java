@@ -10,4 +10,26 @@ public enum ResultatDesEnum {
     ECHEC_CRITIQUE,
     NORMAL;
 
+    public static String getStringEnumValeur(ResultatDesEnum value){
+        String retour = "";
+        for (ResultatDesEnum resultatDes : ResultatDesEnum.values()) {
+            if (resultatDes.name().equals(value.name())) {
+                retour = resultatDes.name();
+            }
+        }
+
+        return retour;
+    }
+
+    public static ResultatDesEnum getEnumStringValeur(String valeur){
+        ResultatDesEnum retour  = null;
+        for (ResultatDesEnum resultatDes : ResultatDesEnum.values()) {
+            if (resultatDes.name().equals(valeur)) {
+                retour = resultatDes;
+            }
+        }
+
+        return retour;
+    }
+
 }

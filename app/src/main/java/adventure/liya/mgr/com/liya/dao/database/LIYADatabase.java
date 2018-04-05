@@ -15,7 +15,6 @@ import adventure.liya.mgr.com.liya.dao.ProgressionDao;
 import adventure.liya.mgr.com.liya.dao.SortilegeDao;
 import adventure.liya.mgr.com.liya.dao.StatistiqueDao;
 import adventure.liya.mgr.com.liya.dao.relations.ActionPeripetieDao;
-import adventure.liya.mgr.com.liya.dao.relations.ActionProgressionDao;
 import adventure.liya.mgr.com.liya.dao.relations.AventurePeripetieDao;
 import adventure.liya.mgr.com.liya.dao.relations.AventurePersonnageDao;
 import adventure.liya.mgr.com.liya.dao.relations.EquipementPersonnageDao;
@@ -24,8 +23,10 @@ import adventure.liya.mgr.com.liya.dao.relations.PersonnageSortilegeDao;
 import adventure.liya.mgr.com.liya.dao.relations.PersonnageStatistiqueDao;
 import adventure.liya.mgr.com.liya.model.Action;
 import adventure.liya.mgr.com.liya.model.Aventure;
+import adventure.liya.mgr.com.liya.model.Cheminement;
 import adventure.liya.mgr.com.liya.model.Effet;
 import adventure.liya.mgr.com.liya.model.Equipement;
+import adventure.liya.mgr.com.liya.model.Inventaire;
 import adventure.liya.mgr.com.liya.model.Objet;
 import adventure.liya.mgr.com.liya.model.Peripetie;
 import adventure.liya.mgr.com.liya.model.Personnage;
@@ -33,7 +34,6 @@ import adventure.liya.mgr.com.liya.model.Progression;
 import adventure.liya.mgr.com.liya.model.Sortilege;
 import adventure.liya.mgr.com.liya.model.Statistique;
 import adventure.liya.mgr.com.liya.model.relations.ActionPeripetie;
-import adventure.liya.mgr.com.liya.model.relations.ActionProgression;
 import adventure.liya.mgr.com.liya.model.relations.AventurePeripetie;
 import adventure.liya.mgr.com.liya.model.relations.AventurePersonnage;
 import adventure.liya.mgr.com.liya.model.relations.EquipementPersonnage;
@@ -41,25 +41,26 @@ import adventure.liya.mgr.com.liya.model.relations.EquipementStatistique;
 import adventure.liya.mgr.com.liya.model.relations.PersonnageSortilege;
 import adventure.liya.mgr.com.liya.model.relations.PersonnageStatistique;
 
-@Database(entities = {Action.class, Aventure.class, Effet.class, Equipement.class, Objet.class,
-        Peripetie.class, Personnage.class, Progression.class, Sortilege.class, Statistique.class,
-        ActionPeripetie.class, ActionProgression.class, AventurePeripetie.class, AventurePersonnage.class,
-        EquipementPersonnage.class, EquipementStatistique.class, PersonnageSortilege.class, PersonnageStatistique.class}, version = 1)
-abstract class LIYADatabase extends RoomDatabase {
+@Database(entities = {Action.class, Aventure.class, Cheminement.class, Effet.class, Equipement.class,
+        Inventaire.class, Objet.class, Peripetie.class, Personnage.class, Progression.class, Sortilege.class,
+        Statistique.class, ActionPeripetie.class, AventurePeripetie.class, AventurePersonnage.class,
+        EquipementPersonnage.class, EquipementStatistique.class, PersonnageSortilege.class,
+        PersonnageStatistique.class}, version = 1)
+public abstract class LIYADatabase extends RoomDatabase {
 
-    private static final String DB_NAME = "liyaDatabase.db";
+    private static final String DB_NAME = "LIYADatabase.db";
     private static volatile  LIYADatabase instance;
 
-    static  synchronized LIYADatabase getInstance(Context context) {
+    public static synchronized LIYADatabase getInstance(Context context) {
         if (instance == null) {
             instance = create(context);
         }
-
+        instance.getActionDao().insert(new Action());
         return instance;
     }
 
     private static LIYADatabase create(final Context context) {
-        return Room.databaseBuilder(context, LIYADatabase.class, DB_NAME).build();
+        return Room.databaseBuilder(context, LIYADatabase.class, DB_NAME).allowMainThreadQueries().build();
     }
 
     // Les DAO de base
@@ -74,7 +75,6 @@ abstract class LIYADatabase extends RoomDatabase {
     public abstract StatistiqueDao getStatistiqueDao();
     // Les DAO de relations
     public abstract ActionPeripetieDao getActionPeripetieDao();
-    public abstract ActionProgressionDao getActionProgressionDao();
     public abstract AventurePeripetieDao getAventurePeripetieDao();
     public abstract AventurePersonnageDao getAventurePersonnageDao();
     public abstract EquipementPersonnageDao getEquipementPersonnageDao();

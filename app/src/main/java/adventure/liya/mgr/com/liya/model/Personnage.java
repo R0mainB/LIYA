@@ -14,7 +14,11 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Maxouxou on 03/04/2018.
  */
 
-@Entity(tableName = "T_PERSONNAGE")
+@Entity(tableName = "T_PERSONNAGE",
+        foreignKeys = {@ForeignKey(entity = Inventaire.class,
+                                    parentColumns = "ID",
+                                    childColumns = "ID_INVENTAIRE",
+                                    onDelete = CASCADE)})
 public class Personnage {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "ID")
@@ -29,7 +33,11 @@ public class Personnage {
     private String classe;
     @ColumnInfo(name = "EST_HEROS")
     private boolean heros;
+    @ColumnInfo(name = "ID_INVENTAIRE")
+    private long idInventaire;
 
+    @Ignore
+    private Inventaire inventaire;
     @Ignore
     private List<Equipement> equipements;
     @Ignore
@@ -41,8 +49,8 @@ public class Personnage {
     public Personnage() {
     }
 
-    @Ignore
-    public Personnage(long id, String nom, int pointVie, int pointMagie, String classe, boolean heros, List<Equipement> equipements,
+    public Personnage(long id, String nom, int pointVie, int pointMagie, String classe, boolean heros,
+                      long idInventaire, Inventaire inventaire, List<Equipement> equipements,
                       List<Sortilege> sortileges, List<Statistique> statistiques, int niveau) {
         this.id = id;
         this.nom = nom;
@@ -50,6 +58,8 @@ public class Personnage {
         this.pointMagie = pointMagie;
         this.classe = classe;
         this.heros = heros;
+        this.idInventaire = idInventaire;
+        this.inventaire = inventaire;
         this.equipements = equipements;
         this.sortileges = sortileges;
         this.statistiques = statistiques;
@@ -102,6 +112,22 @@ public class Personnage {
 
     public void setHeros(boolean heros) {
         this.heros = heros;
+    }
+
+    public long getIdInventaire() {
+        return idInventaire;
+    }
+
+    public void setIdInventaire(long idInventaire) {
+        this.idInventaire = idInventaire;
+    }
+
+    public Inventaire getInventaire() {
+        return inventaire;
+    }
+
+    public void setInventaire(Inventaire inventaire) {
+        this.inventaire = inventaire;
     }
 
     public List<Equipement> getEquipements() {

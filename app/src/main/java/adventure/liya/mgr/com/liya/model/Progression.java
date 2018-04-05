@@ -2,16 +2,31 @@ package adventure.liya.mgr.com.liya.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.List;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
 /**
  * Created by Maxouxou on 03/04/2018.
  */
 
-@Entity(tableName = "T_PROGRESSION")
+@Entity(tableName = "T_PROGRESSION",
+        foreignKeys = {@ForeignKey(entity = Personnage.class,
+                                    parentColumns = "ID",
+                                    childColumns = "ID_PERSONNAGE",
+                                    onDelete = CASCADE),
+                        @ForeignKey(entity = Aventure.class,
+                                    parentColumns = "ID",
+                                    childColumns = "ID_AVENTURE",
+                                    onDelete = CASCADE),
+                        @ForeignKey(entity = Peripetie.class,
+                                    parentColumns = "ID",
+                                    childColumns = "ID_PERIPETIE",
+                                    onDelete = CASCADE)})
 public class Progression {
 
     @PrimaryKey(autoGenerate = true)
@@ -27,23 +42,17 @@ public class Progression {
     private Aventure aventure;
     @ColumnInfo(name = "ID_PERIPETIE")
     private long idPeripetie;
-    @Ignore
-    private Peripetie peripetie;
-    @Ignore
-    private List<Action> actions;
 
     public Progression() {
     }
 
-    public Progression(long id, long idPersonnage, Personnage personnage, long idAventure, Aventure aventure, long idPeripetie, Peripetie peripetie, List<Action> actions) {
+    public Progression(long id, long idPersonnage, Personnage personnage, long idAventure, Aventure aventure, long idPeripetie) {
         this.id = id;
         this.idPersonnage = idPersonnage;
         this.personnage = personnage;
         this.idAventure = idAventure;
         this.aventure = aventure;
         this.idPeripetie = idPeripetie;
-        this.peripetie = peripetie;
-        this.actions = actions;
     }
 
     public long getId() {
@@ -92,21 +101,5 @@ public class Progression {
 
     public void setIdPeripetie(long idPeripetie) {
         this.idPeripetie = idPeripetie;
-    }
-
-    public Peripetie getPeripetie() {
-        return peripetie;
-    }
-
-    public void setPeripetie(Peripetie peripetie) {
-        this.peripetie = peripetie;
-    }
-
-    public List<Action> getActions() {
-        return actions;
-    }
-
-    public void setActions(List<Action> actions) {
-        this.actions = actions;
     }
 }
