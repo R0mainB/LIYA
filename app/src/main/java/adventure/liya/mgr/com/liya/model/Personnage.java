@@ -44,7 +44,6 @@ public class Personnage {
     private List<Sortilege> sortileges;
     @Ignore
     private List<Statistique> statistiques;
-    private int niveau;
 
     public Personnage() {
     }
@@ -63,7 +62,6 @@ public class Personnage {
         this.equipements = equipements;
         this.sortileges = sortileges;
         this.statistiques = statistiques;
-        this.niveau = niveau;
     }
 
     public long getId() {
@@ -152,13 +150,5 @@ public class Personnage {
 
     public void setStatistiques(List<Statistique> statistiques) {
         this.statistiques = statistiques;
-    }
-
-    public int getNiveau() {
-        return niveau;
-    }
-
-    public void setNiveau(int niveau) {
-        this.niveau = niveau;
     }
 }

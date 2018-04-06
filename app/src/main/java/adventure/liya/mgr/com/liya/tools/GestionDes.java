@@ -14,34 +14,23 @@ public class GestionDes {
     // Score minimum possible au dés
     private final int MIN_DES = 1;
 
-    // Résultat du lancé de dés
-    private int resultat;
-
-    // Type de résultat (critique, normal, etc)
-    private ResultatDesEnum type;
-
     public GestionDes() {
     }
 
-    public int getResultat() {
-        return resultat;
-    }
+    public Des lancerDes(DesEnum eDes){
+        Des des = new Des();
 
-    public ResultatDesEnum getType() {
-        return type;
-    }
-
-    public void lancerDes(DesEnum des){
         Random rand = new Random();
-        this.resultat = rand.nextInt(des.getNbFaces() + MIN_DES);
+        des.setResultat(rand.nextInt(eDes.getNbFaces() + MIN_DES));
 
-        if (this.resultat <= des.getTauxReussiteCritique()) {
-            this.type = ResultatDesEnum.REUSSITE_CRITIQUE;
-        } else if (this.resultat >= des.getTauxEchecCritique()) {
-            this.type = ResultatDesEnum.ECHEC_CRITIQUE;
+        if (des.getResultat() <= eDes.getTauxReussiteCritique()) {
+            des.setType(ResultatDesEnum.REUSSITE_CRITIQUE);
+        } else if (des.getResultat() >= eDes.getTauxEchecCritique()) {
+            des.setType(ResultatDesEnum.ECHEC_CRITIQUE);
         } else {
-            this.type = ResultatDesEnum.NORMAL;
+            des.setType(ResultatDesEnum.NORMAL);
         }
 
+        return des;
     }
 }

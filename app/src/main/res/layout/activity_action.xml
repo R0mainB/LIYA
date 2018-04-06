@@ -13,6 +13,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/lbl_titre_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -24,6 +25,7 @@
             android:src="@mipmap/ic_launcher_round"/>
 
         <TextView
+            android:id="@+id/lbl_description_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -38,6 +40,7 @@
         android:layout_weight="1">
 
         <Button
+            android:id="@+id/btn_action1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_btnAction_1"
@@ -46,6 +49,7 @@
             android:visibility="gone"/>
 
         <Button
+            android:id="@+id/btn_action2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_btnAction_2"
@@ -54,6 +58,7 @@
             android:visibility="gone"/>
 
         <Button
+            android:id="@+id/btn_action3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_btnAction_3"
@@ -62,6 +67,7 @@
             android:visibility="gone"/>
 
         <Button
+            android:id="@+id/btn_action4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/text_btnAction_4"
