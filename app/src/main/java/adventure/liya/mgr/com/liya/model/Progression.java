@@ -5,9 +5,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-import java.util.Date;
-import java.util.List;
+import java.util.UUID;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -34,9 +34,10 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                                     onDelete = CASCADE)})
 public class Progression {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "DATE_ACTION")
     private String dateAction;
     @ColumnInfo(name = "ID_PERSONNAGE")
@@ -49,12 +50,15 @@ public class Progression {
     private long idInventaire;
     @ColumnInfo(name = "NIVEAU_PERSONNAGE")
     private int niveauPersonnage;
+    @ColumnInfo(name = "EXPERIENCE")
+    private int experience;
 
     public Progression() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Progression(long id, String dateAction, long idPersonnage, long idAventure, long idPeripetie, long idInventaire, int niveauPersonnage) {
+    public Progression(String id, String dateAction, long idPersonnage, long idAventure, long idPeripetie, long idInventaire, int niveauPersonnage, int experience) {
         this.id = id;
         this.dateAction = dateAction;
         this.idPersonnage = idPersonnage;
@@ -62,13 +66,15 @@ public class Progression {
         this.idPeripetie = idPeripetie;
         this.idInventaire = idInventaire;
         this.niveauPersonnage = niveauPersonnage;
+        this.experience = experience;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -118,5 +124,13 @@ public class Progression {
 
     public void setNiveauPersonnage(int niveauPersonnage) {
         this.niveauPersonnage = niveauPersonnage;
+    }
+
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 }

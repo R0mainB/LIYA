@@ -19,7 +19,7 @@ public interface StatistiqueDao {
     List<Statistique> getAllStatistiques();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Statistique getStatistiqueById(int id);
+    Statistique getStatistiqueById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Statistique getStatistiqueByLibelle(String libelle);

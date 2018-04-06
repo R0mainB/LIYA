@@ -19,7 +19,7 @@ public interface PersonnageDao {
     List<Personnage> getAllPersonnages();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Personnage getPersonnageById(int id);
+    Personnage getPersonnageById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE NOM = :nom")
     Personnage getPersonnageByNom(String nom);

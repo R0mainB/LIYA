@@ -4,13 +4,17 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 @Entity(tableName = "T_SORTILEGE")
 public class Sortilege {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "LIBELLE")
     private String libelle;
     @ColumnInfo(name = "COUT_MAGIE")
@@ -21,10 +25,11 @@ public class Sortilege {
     private int niveauRequis;
 
     public Sortilege() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Sortilege(long id, String libelle, int coutMagie, int degatMin, int niveauRequis) {
+    public Sortilege(String id, String libelle, int coutMagie, int degatMin, int niveauRequis) {
         this.id = id;
         this.libelle = libelle;
         this.coutMagie = coutMagie;
@@ -32,11 +37,12 @@ public class Sortilege {
         this.niveauRequis = niveauRequis;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

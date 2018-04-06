@@ -19,7 +19,7 @@ public interface SortilegeDao {
     List<Sortilege> getAllSortileges();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Sortilege getSortilegeById(int id);
+    Sortilege getSortilegeById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Sortilege getSortilegeByLibelle(String libelle);

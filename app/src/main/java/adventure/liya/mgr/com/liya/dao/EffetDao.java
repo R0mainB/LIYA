@@ -19,7 +19,7 @@ public interface EffetDao {
     List<Effet> getAllEffets();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Effet getEffetById(int id);
+    Effet getEffetById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Effet getEffetByLibelle(String libelle);

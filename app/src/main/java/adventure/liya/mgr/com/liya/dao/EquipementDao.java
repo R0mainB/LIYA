@@ -19,7 +19,7 @@ public interface EquipementDao {
     List<Equipement> getAllEquipements();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Equipement getEquipementById(int id);
+    Equipement getEquipementById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE NOM = :nom")
     Equipement getEquipementByNom(String nom);

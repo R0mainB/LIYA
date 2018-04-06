@@ -4,8 +4,10 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by rbonhomme2016 on 04/04/2018.
@@ -14,9 +16,10 @@ import java.util.List;
 @Entity(tableName = "T_INVENTAIRE")
 public class Inventaire {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "NOM")
     private String nom;
     @ColumnInfo(name = "NB_SLOT")
@@ -27,10 +30,11 @@ public class Inventaire {
     private List<Objet> objets;
 
     public Inventaire() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Inventaire(long id, String nom, int nbSlot, List<Equipement> equipements, List<Objet> objets) {
+    public Inventaire(String id, String nom, int nbSlot, List<Equipement> equipements, List<Objet> objets) {
         this.id = id;
         this.nom = nom;
         this.nbSlot = nbSlot;
@@ -38,11 +42,12 @@ public class Inventaire {
         this.objets = objets;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

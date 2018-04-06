@@ -23,7 +23,7 @@ public interface InventaireDao {
     List<Inventaire> getAllInventaires();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Inventaire getInventaireById(int id);
+    Inventaire getInventaireById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE NOM = :nom")
     Inventaire getInventaireByLibelle(String nom);

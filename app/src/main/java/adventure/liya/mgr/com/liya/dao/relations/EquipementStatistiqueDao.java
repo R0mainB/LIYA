@@ -19,7 +19,7 @@ public interface EquipementStatistiqueDao {
     List<EquipementStatistique> getAllEquipementStatistiques();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    EquipementStatistique getEquipementStatistiqueById(int id);
+    EquipementStatistique getEquipementStatistiqueById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_EQUIPEMENT = :idEquipement")
     EquipementStatistique getEquipementStatistiqueByEquipement(long idEquipement);

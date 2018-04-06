@@ -19,7 +19,7 @@ public interface AventurePersonnageDao {
     List<AventurePersonnage> getAllAventurePersonnages();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    AventurePersonnage getAventurePersonnageById(int id);
+    AventurePersonnage getAventurePersonnageById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_AVENTURE = :idAventure")
     AventurePersonnage getAventurePersonnageByAventure(long idAventure);

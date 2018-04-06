@@ -4,8 +4,10 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Maxouxou on 02/04/2018.
@@ -13,19 +15,21 @@ import java.util.List;
 
 @Entity(tableName = "T_PERIPETIE")
 public class Peripetie {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "DESCRIPTION")
     private String description;
     @Ignore
     private List<Action> actions;
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -45,10 +49,12 @@ public class Peripetie {
         this.actions = actions;
     }
 
-    public Peripetie(){}
+    public Peripetie(){
+        this.id = UUID.randomUUID().toString();
+    }
 
     @Ignore
-    public Peripetie(long id, String description) {
+    public Peripetie(String id, String description) {
         this.id = id;
         this.description = description;
     }

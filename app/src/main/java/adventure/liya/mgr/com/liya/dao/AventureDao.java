@@ -19,7 +19,7 @@ public interface AventureDao {
     List<Aventure> getAllAventures();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Aventure getAventureById(int id);
+    Aventure getAventureById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Aventure getAventureByLibelle(String libelle);

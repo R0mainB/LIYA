@@ -5,8 +5,10 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.UUID;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -20,9 +22,10 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                                     childColumns = "ID_INVENTAIRE",
                                     onDelete = CASCADE)})
 public class Personnage {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "NOM")
     private String nom;
     @ColumnInfo(name = "POINT_DE_VIE")
@@ -44,13 +47,15 @@ public class Personnage {
     private List<Sortilege> sortileges;
     @Ignore
     private List<Statistique> statistiques;
+    @Ignore
+    private List<Specialite> specialites;
 
     public Personnage() {
+        this.id = UUID.randomUUID().toString();
     }
 
-    public Personnage(long id, String nom, int pointVie, int pointMagie, String classe, boolean heros,
-                      long idInventaire, Inventaire inventaire, List<Equipement> equipements,
-                      List<Sortilege> sortileges, List<Statistique> statistiques, int niveau) {
+    @Ignore
+    public Personnage(String id, String nom, int pointVie, int pointMagie, String classe, boolean heros, long idInventaire, Inventaire inventaire, List<Equipement> equipements, List<Sortilege> sortileges, List<Statistique> statistiques, List<Specialite> specialites) {
         this.id = id;
         this.nom = nom;
         this.pointVie = pointVie;
@@ -62,13 +67,15 @@ public class Personnage {
         this.equipements = equipements;
         this.sortileges = sortileges;
         this.statistiques = statistiques;
+        this.specialites = specialites;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -150,5 +157,13 @@ public class Personnage {
 
     public void setStatistiques(List<Statistique> statistiques) {
         this.statistiques = statistiques;
+    }
+
+    public List<Specialite> getSpecialites() {
+        return specialites;
+    }
+
+    public void setSpecialites(List<Specialite> specialites) {
+        this.specialites = specialites;
     }
 }

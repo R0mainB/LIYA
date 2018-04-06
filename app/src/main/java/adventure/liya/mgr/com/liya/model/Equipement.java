@@ -4,15 +4,18 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity(tableName = "T_EQUIPEMENT")
 public class Equipement {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "NOM")
     private String nom;
     @ColumnInfo(name = "TYPE")
@@ -24,10 +27,11 @@ public class Equipement {
 
 
     public Equipement() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Equipement(long id, String nom, String type, int bonus, int niveauRequis) {
+    public Equipement(String id, String nom, String type, int bonus, int niveauRequis) {
         this.id = id;
         this.nom = nom;
         this.type = type;
@@ -35,11 +39,12 @@ public class Equipement {
         this.niveauRequis = niveauRequis;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

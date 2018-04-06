@@ -19,7 +19,7 @@ public interface ProgressionDao {
     List<Progression> getAllProgressions();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Progression getProgressionById(int id);
+    Progression getProgressionById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_AVENTURE = :idAventure")
     Progression getProgressionByAventure(long idAventure);

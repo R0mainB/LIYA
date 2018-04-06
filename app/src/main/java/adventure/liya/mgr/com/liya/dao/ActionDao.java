@@ -19,7 +19,7 @@ public interface ActionDao {
     List<Action> getAllActions();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Action getActionById(int id);
+    Action getActionById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE TITRE = :titre")
     Action getActionByTitre(String titre);

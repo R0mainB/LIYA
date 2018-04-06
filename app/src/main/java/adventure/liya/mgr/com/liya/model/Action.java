@@ -4,6 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 /**
  * Created by Maxouxou on 03/04/2018.
@@ -11,17 +14,19 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "T_ACTION")
 public class Action {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "TITRE")
     private String titre;
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -33,10 +38,12 @@ public class Action {
         this.titre = titre;
     }
 
-    public Action(){}
+    public Action(){
+        this.id = UUID.randomUUID().toString();
+    }
 
     @Ignore
-    public Action(long id, String titre) {
+    public Action(String id, String titre) {
         this.id = id;
         this.titre = titre;
     }

@@ -19,7 +19,7 @@ public interface PersonnageStatistiqueDao {
     List<PersonnageStatistique> getAllPersonnageStatistiques();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    PersonnageStatistique getPersonnageStatistiqueById(int id);
+    PersonnageStatistique getPersonnageStatistiqueById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_PERSONNAGE = :idPersonnage")
     PersonnageStatistique getPersonnageStatistiqueByPersonnage(long idPersonnage);

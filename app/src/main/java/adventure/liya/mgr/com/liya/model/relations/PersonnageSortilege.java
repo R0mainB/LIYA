@@ -5,6 +5,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 import adventure.liya.mgr.com.liya.model.Personnage;
 import adventure.liya.mgr.com.liya.model.Sortilege;
@@ -21,33 +24,36 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                                     childColumns = "ID_SORTILEGE",
                                     onDelete = CASCADE)})
 /*
- * Classe de liaison entre les equipements et les statistiques
+ * Classe de liaison entre les personnages et les sortileges
  * */
 public class PersonnageSortilege {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "ID_PERSONNAGE")
     private long idPersonnage;
     @ColumnInfo(name = "ID_SORTILEGE")
-    private long idSortielege;
+    private long idSortilege;
 
     public PersonnageSortilege() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public PersonnageSortilege(long id, long idPersonnage, long idSortielege) {
+    public PersonnageSortilege(String id, long idPersonnage, long idSortilege) {
         this.id = id;
         this.idPersonnage = idPersonnage;
-        this.idSortielege = idSortielege;
+        this.idSortilege = idSortilege;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -59,11 +65,11 @@ public class PersonnageSortilege {
         this.idPersonnage = idPersonnage;
     }
 
-    public long getIdSortielege() {
-        return idSortielege;
+    public long getIdSortilege() {
+        return idSortilege;
     }
 
-    public void setIdSortielege(long idSortielege) {
-        this.idSortielege = idSortielege;
+    public void setIdSortilege(long idSortilege) {
+        this.idSortilege = idSortilege;
     }
 }

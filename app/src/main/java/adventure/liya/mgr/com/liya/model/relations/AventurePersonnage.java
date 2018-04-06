@@ -4,6 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 import adventure.liya.mgr.com.liya.model.Aventure;
 import adventure.liya.mgr.com.liya.model.Personnage;
@@ -23,28 +26,32 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
 * Classe de liaison entre les aventures et les personnages (héros, pnj, ennemis, etc.)
 * */
 public class AventurePersonnage {
-    @PrimaryKey(autoGenerate = true)
+
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "ID_PERSONNAGE")
     private long idPersonnage;
     @ColumnInfo(name = "ID_AVENTURE")
     private long idAventure;
 
     public AventurePersonnage() {
+        this.id = UUID.randomUUID().toString();
     }
 
-    public AventurePersonnage(long id, long idPersonnage, long idAventure) {
+    public AventurePersonnage(String id, long idPersonnage, long idAventure) {
         this.id = id;
         this.idPersonnage = idPersonnage;
         this.idAventure = idAventure;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

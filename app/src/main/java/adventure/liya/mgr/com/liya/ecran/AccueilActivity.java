@@ -1,22 +1,14 @@
 package adventure.liya.mgr.com.liya.ecran;
 
-        import android.content.Intent;
-        import android.content.Intent;
-        import android.content.res.Configuration;
-        import android.media.Image;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.ImageButton;
-        import android.widget.LinearLayout;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 
-        import adventure.liya.mgr.com.liya.R;
-        import adventure.liya.mgr.com.liya.enumeration.DesEnum;
-        import adventure.liya.mgr.com.liya.model.Aventure;
-        import adventure.liya.mgr.com.liya.tools.GestionDes;
-        import adventure.liya.mgr.com.liya.tools.GestionEcran;
-        import adventure.liya.mgr.com.liya.tools.GestionJsonAventure;
+import adventure.liya.mgr.com.liya.R;
+import adventure.liya.mgr.com.liya.model.Aventure;
+import adventure.liya.mgr.com.liya.tools.GestionEcran;
 
 public class AccueilActivity extends AppCompatActivity {
     private Aventure aventure;

@@ -4,6 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 import adventure.liya.mgr.com.liya.model.Equipement;
 import adventure.liya.mgr.com.liya.model.Statistique;
@@ -24,28 +27,31 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * */
 public class EquipementStatistique {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "ID_EQUIPEMENT")
     private long idEquipement;
     @ColumnInfo(name = "ID_STATISTIQUE")
     private long idStatistique;
 
     public EquipementStatistique() {
+        this.id = UUID.randomUUID().toString();
     }
 
-    public EquipementStatistique(long id, long idEquipement, long idStatistique) {
+    public EquipementStatistique(String id, long idEquipement, long idStatistique) {
         this.id = id;
         this.idEquipement = idEquipement;
         this.idStatistique = idStatistique;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

@@ -23,7 +23,7 @@ public interface CheminementDao {
     List<Cheminement> getAllCheminements();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Cheminement getCheminementById(int id);
+    Cheminement getCheminementById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_PERIPETIE_DEPART = :idPeripetieDepart")
     Cheminement getCheminementByAventure(long idPeripetieDepart);

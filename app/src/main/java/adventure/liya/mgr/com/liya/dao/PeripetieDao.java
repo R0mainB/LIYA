@@ -19,7 +19,7 @@ public interface PeripetieDao {
     List<Peripetie> getAllPeripeties();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Peripetie getPeripetieById(int id);
+    Peripetie getPeripetieById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE DESCRIPTION LIKE :description")
     Peripetie getPeripetieByDescription(String description);

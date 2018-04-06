@@ -19,7 +19,7 @@ public interface ActionPeripetieDao {
     List<ActionPeripetie> getAllActionPeripeties();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    ActionPeripetie getActionPeripetieById(int id);
+    ActionPeripetie getActionPeripetieById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_ACTION = :idAction")
     ActionPeripetie getActionPeripetieByAction(long idAction);

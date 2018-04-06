@@ -4,8 +4,10 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Maxouxou on 03/04/2018.
@@ -13,9 +15,10 @@ import java.util.List;
 
 @Entity(tableName = "T_AVENTURE")
 public class Aventure {
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "LIBELLE")
     private String libelle;
     @ColumnInfo(name = "DESCRIPTION")
@@ -25,11 +28,12 @@ public class Aventure {
     @Ignore
     private List<Peripetie> peripeties;
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 
@@ -65,14 +69,17 @@ public class Aventure {
         this.peripeties = histoires;
     }
 
-    public Aventure(){}
+    public Aventure(){
+        this.id = UUID.randomUUID().toString();
+    }
+
     public Aventure(String libelle, String description){
         this.libelle = libelle;
         this.description = description;
     }
 
     @Ignore
-    public Aventure(long id, String libelle,String description, List<Personnage> personnages, List<Peripetie> histoires) {
+    public Aventure(String id, String libelle,String description, List<Personnage> personnages, List<Peripetie> histoires) {
         this.id = id;
         this.libelle = libelle;
         this.description = description;

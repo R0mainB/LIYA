@@ -6,6 +6,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 import adventure.liya.mgr.com.liya.model.Action;
 import adventure.liya.mgr.com.liya.model.Peripetie;
@@ -26,29 +29,32 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * */
 public class ActionPeripetie {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "ID_ACTION")
     private long idAction;
     @ColumnInfo(name = "ID_PERIPETIE")
     private long idPeripetie;
 
     public ActionPeripetie() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public ActionPeripetie(long id, long idAction, long idPeripetie) {
+    public ActionPeripetie(String id, long idAction, long idPeripetie) {
         this.id = id;
         this.idAction = idAction;
         this.idPeripetie = idPeripetie;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

@@ -19,7 +19,7 @@ public interface ObjetDao {
     List<Objet> getAllObjets();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Objet getObjetById(int id);
+    Objet getObjetById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Objet getObjetByLibelle(String libelle);

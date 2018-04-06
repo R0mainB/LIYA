@@ -6,6 +6,9 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverters;
+import android.support.annotation.NonNull;
+
+import java.util.UUID;
 
 import adventure.liya.mgr.com.liya.enumeration.DesEnum;
 import adventure.liya.mgr.com.liya.enumeration.ResultatDesEnum;
@@ -32,9 +35,10 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
                                     onDelete = CASCADE)})
 public class Cheminement {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "ID")
-    private long id;
+    @NonNull
+    private String id;
     @ColumnInfo(name = "ID_PERIPETIE_DEPART")
     private long idPeripetieDepart;
     @ColumnInfo(name = "ID_ACTION")
@@ -46,10 +50,11 @@ public class Cheminement {
     private long idPeripetieSuite;
 
     public Cheminement() {
+        this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Cheminement(long id, long idPeripetieDepart, long idAction, ResultatDesEnum resultatDes, long idPeripetieSuite) {
+    public Cheminement(String id, long idPeripetieDepart, long idAction, ResultatDesEnum resultatDes, long idPeripetieSuite) {
         this.id = id;
         this.idPeripetieDepart = idPeripetieDepart;
         this.idAction = idAction;
@@ -57,11 +62,12 @@ public class Cheminement {
         this.idPeripetieSuite = idPeripetieSuite;
     }
 
-    public long getId() {
+    @NonNull
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

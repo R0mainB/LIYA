@@ -19,7 +19,7 @@ public interface PersonnageSortilegeDao {
     List<PersonnageSortilege> getAllPersonnageSortileges();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    PersonnageSortilege getPersonnageSortilegeById(int id);
+    PersonnageSortilege getPersonnageSortilegeById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID_PERSONNAGE = :idPersonnage")
     PersonnageSortilege getPersonnageSortilegeByPersonnage(long idPersonnage);

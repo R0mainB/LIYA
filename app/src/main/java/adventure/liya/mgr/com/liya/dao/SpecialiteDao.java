@@ -19,7 +19,7 @@ public interface SpecialiteDao {
     List<Specialite> getAllSpecialites();
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE ID = :id")
-    Specialite getSpecialiteById(int id);
+    Specialite getSpecialiteById(String id);
 
     @Query("SELECT * FROM " + TABLE_NAME + " WHERE LIBELLE = :libelle")
     Specialite getSpecialiteByLibelle(String libelle);
