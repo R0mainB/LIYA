@@ -11,7 +11,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        LIYADatabase.getInstance(Application.this);
+        /*LIYADatabase.getInstance(Application.this);*/
 
     }
 }

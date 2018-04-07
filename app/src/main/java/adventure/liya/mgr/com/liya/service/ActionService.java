@@ -1,6 +1,5 @@
 package adventure.liya.mgr.com.liya.service;
 
-import adventure.liya.mgr.com.liya.enumeration.ActionEnum;
 import adventure.liya.mgr.com.liya.model.Aventure;
 import adventure.liya.mgr.com.liya.model.Personnage;
 

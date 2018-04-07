@@ -40,21 +40,21 @@ public class Cheminement {
     @NonNull
     private String id;
     @ColumnInfo(name = "ID_PERIPETIE_DEPART")
-    private long idPeripetieDepart;
+    private String idPeripetieDepart;
     @ColumnInfo(name = "ID_ACTION")
-    private long idAction;
+    private String idAction;
     @ColumnInfo(name = "RESULTAT_DES")
     @TypeConverters(ResultatDesConvertisseur.class)
     private ResultatDesEnum resultatDes;
     @ColumnInfo(name = "ID_PERIPETIE_SUITE")
-    private long idPeripetieSuite;
+    private String idPeripetieSuite;
 
     public Cheminement() {
         this.id = UUID.randomUUID().toString();
     }
 
     @Ignore
-    public Cheminement(String id, long idPeripetieDepart, long idAction, ResultatDesEnum resultatDes, long idPeripetieSuite) {
+    public Cheminement(String id, String idPeripetieDepart, String idAction, ResultatDesEnum resultatDes, String idPeripetieSuite) {
         this.id = id;
         this.idPeripetieDepart = idPeripetieDepart;
         this.idAction = idAction;
@@ -71,19 +71,19 @@ public class Cheminement {
         this.id = id;
     }
 
-    public long getIdPeripetieDepart() {
+    public String getIdPeripetieDepart() {
         return idPeripetieDepart;
     }
 
-    public void setIdPeripetieDepart(long idPeripetieDepart) {
+    public void setIdPeripetieDepart(String idPeripetieDepart) {
         this.idPeripetieDepart = idPeripetieDepart;
     }
 
-    public long getIdAction() {
+    public String getIdAction() {
         return idAction;
     }
 
-    public void setIdAction(long idAction) {
+    public void setIdAction(String idAction) {
         this.idAction = idAction;
     }
 
@@ -95,11 +95,11 @@ public class Cheminement {
         this.resultatDes = resultatDes;
     }
 
-    public long getIdPeripetieSuite() {
+    public String getIdPeripetieSuite() {
         return idPeripetieSuite;
     }
 
-    public void setIdPeripetieSuite(long idPeripetieSuite) {
+    public void setIdPeripetieSuite(String idPeripetieSuite) {
         this.idPeripetieSuite = idPeripetieSuite;
     }
 }

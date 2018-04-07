@@ -58,4 +58,10 @@ public class Peripetie {
         this.id = id;
         this.description = description;
     }
+
+    public Peripetie(String id, String description,List<Action> actions) {
+        this.id = id;
+        this.description = description;
+        this.actions = actions;
+    }
 }

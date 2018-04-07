@@ -13,18 +13,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/lbl_titre_action"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@string/zone_action"/>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round"/>
-
-        <TextView
             android:id="@+id/lbl_description_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

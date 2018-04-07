@@ -36,7 +36,7 @@ public class SelectionAventureActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                long id = ((Aventure) lv.getItemAtPosition(i)).getId();
+                String id = ((Aventure) lv.getItemAtPosition(i)).getId();
                 Intent intent = new Intent(SelectionAventureActivity.this,DetailAventureActivity.class);
                 intent.putExtra("id",id);
                 startActivity(intent);

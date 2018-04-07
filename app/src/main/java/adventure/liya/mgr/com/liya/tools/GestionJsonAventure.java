@@ -1,6 +1,7 @@
 package adventure.liya.mgr.com.liya.tools;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +16,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
+import adventure.liya.mgr.com.liya.ecran.ActionActivity;
 import adventure.liya.mgr.com.liya.model.Aventure;
 
 /**
@@ -22,7 +24,8 @@ import adventure.liya.mgr.com.liya.model.Aventure;
  */
 
 public class GestionJsonAventure {
-    public void lireJsonAventure(final Aventure aventure,Context context, String url){
+    private static Aventure a = new Aventure();
+    public static Aventure lireJsonAventure(final Context context, String url){
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -31,11 +34,10 @@ public class GestionJsonAventure {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
                             Moshi moshi = new Moshi.Builder().build();
                             JsonAdapter<Aventure> jsonAdapter = moshi.adapter(Aventure.class);
 
-                            Aventure a = jsonAdapter.fromJson(response.toString());
+                            a = jsonAdapter.fromJson(response.toString());
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -44,11 +46,12 @@ public class GestionJsonAventure {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.i(context.toString(),error.getMessage());
                     }
                 }
         );
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
+        return a;
     }
 }
