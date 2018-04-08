@@ -61,11 +61,11 @@ public class Aventure {
         this.personnages = personnages;
     }
 
-    public List<Peripetie> getHistoires() {
+    public List<Peripetie> getPeripetie() {
         return peripeties;
     }
 
-    public void setHistoires(List<Peripetie> histoires) {
+    public void setPeripetie(List<Peripetie> histoires) {
         this.peripeties = histoires;
     }
 

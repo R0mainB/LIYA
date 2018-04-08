@@ -24,8 +24,9 @@ import adventure.liya.mgr.com.liya.model.Aventure;
  */
 
 public class GestionJsonAventure {
-    private static Aventure a = new Aventure();
+    private static Aventure a;
     public static Aventure lireJsonAventure(final Context context, String url){
+
         JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
                 url,
@@ -52,6 +53,15 @@ public class GestionJsonAventure {
         );
         RequestQueue queue = Volley.newRequestQueue(context);
         queue.add(request);
+
+        while (a == null) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         return a;
     }
 }

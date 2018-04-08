@@ -9,6 +9,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import adventure.liya.mgr.com.liya.R;
+import adventure.liya.mgr.com.liya.dao.AventureDao;
+import adventure.liya.mgr.com.liya.dao.database.LIYADatabase;
 import adventure.liya.mgr.com.liya.model.Action;
 import adventure.liya.mgr.com.liya.model.Aventure;
 import adventure.liya.mgr.com.liya.model.Peripetie;
@@ -124,13 +126,14 @@ public class ActionActivity extends AppCompatActivity {
         @Override
         protected Aventure doInBackground(Object... objects) {
             aventure = GestionJsonAventure.lireJsonAventure(ActionActivity.this,"http://rolyncraft.fr/img/perso/liya/aventure.json");
-            return null;
+            LIYADatabase.getInstance(ActionActivity.this).getAventureDao().insert(aventure);
+            return aventure;
         }
 
         @Override
         protected void onPostExecute(Aventure aventure) {
             Boolean test = true;
-            for(Peripetie p : aventure.getHistoires()){
+            for(Peripetie p : aventure.getPeripetie()){
                 if(test && p != null){
                     test= false;
                     actualiserActivity(p);

@@ -21,8 +21,24 @@ public class Peripetie {
     private String id;
     @ColumnInfo(name = "DESCRIPTION")
     private String description;
+    @ColumnInfo(name = "PROLOGUE")
+    private boolean prologue;
     @Ignore
     private List<Action> actions;
+    @Ignore
+    private List<Cheminement> cheminements;
+
+    public Peripetie() {
+    }
+
+    @Ignore
+    public Peripetie(@NonNull String id, String description, boolean prologue, List<Action> actions, List<Cheminement> cheminements) {
+        this.id = id;
+        this.description = description;
+        this.prologue = prologue;
+        this.actions = actions;
+        this.cheminements = cheminements;
+    }
 
     @NonNull
     public String getId() {
@@ -41,6 +57,14 @@ public class Peripetie {
         this.description = description;
     }
 
+    public boolean isPrologue() {
+        return prologue;
+    }
+
+    public void setPrologue(boolean prologue) {
+        this.prologue = prologue;
+    }
+
     public List<Action> getActions() {
         return actions;
     }
@@ -49,19 +73,11 @@ public class Peripetie {
         this.actions = actions;
     }
 
-    public Peripetie(){
-        this.id = UUID.randomUUID().toString();
+    public List<Cheminement> getCheminements() {
+        return cheminements;
     }
 
-    @Ignore
-    public Peripetie(String id, String description) {
-        this.id = id;
-        this.description = description;
-    }
-
-    public Peripetie(String id, String description,List<Action> actions) {
-        this.id = id;
-        this.description = description;
-        this.actions = actions;
+    public void setCheminements(List<Cheminement> cheminements) {
+        this.cheminements = cheminements;
     }
 }
